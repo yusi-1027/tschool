@@ -21,7 +21,7 @@ const app = createApp({
         return {
             sections: {
                 about: {
-                    title: '關於我們<br>ABOUT US',
+                    title: '關於我們的<br>ABOUT US',
                     content: `
                         <div class="about-content">
                             <div class="school-intro">
