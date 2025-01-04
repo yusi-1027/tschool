@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-SCHOOL</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="vue.global.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- 導航欄 -->
+        <nav class="navbar">
+            <div class="logo">T-SCHOOL</div>
+            <div class="search-box">
+                <input type="text" placeholder="搜尋...">
+            </div>
+        </nav>
+
+        <!-- 最新消息輪播 -->
+        <div class="news-ticker" v-show="currentView === 'home'">
+            <transition name="fade" mode="out-in">
+                <div :key="currentNewsIndex" class="news-item">
+                    {{ news[currentNewsIndex] }}
+                </div>
+            </transition>
+        </div>
+
+        <!-- 主要內容區 -->
+        <main>
+            <!-- 首頁區塊 -->
+            <div v-if="currentView === 'home'" class="sections">
+                <section v-for="(section, key) in sections" 
+                         :key="key"
+                         class="section"
+                         :class="key + '-section'"
+                         @click="currentView = key"
+                         v-scroll-reveal>
+                    <h2 v-html="section.title"></h2>
+                    <div class="scroll-indicator">▼</div>
+                </section>
+            </div>
+
+            <!-- 內容頁面 -->
+            <div v-for="(section, key) in sections" 
+                 :key="key"
+                 v-if="currentView === key" 
+                 class="page"
+                 :class="key + '-page'">
+                <div class="page-content" v-scroll-reveal>
+                    <div v-html="section.content"></div>
+                    <button class="home-btn" @click="currentView = 'home'">
+                        返回首頁
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- 返回首頁按鈕 -->
+        <transition name="fade">
+            <button v-if="currentView !== 'home'" 
+                    @click="currentView = 'home'" 
+                    class="home-btn">
+                返回首頁
+            </button>
+        </transition>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
