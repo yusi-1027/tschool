@@ -885,11 +885,24 @@ main {
 .back-btn,
 .return-btn,
 [class*="back-to-home"],
-[class*="return-home"] {
+[class*="return-home"],
+[class*="back"],
+[class*="return"],
+button[class*="back"],
+button[class*="return"],
+a[class*="back"],
+a[class*="return"] {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
 }
 
 /* Notification Style */

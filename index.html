@@ -40,15 +40,6 @@
                         <h2 v-html="section.title"></h2>
                     </section>
                 </div>
-
-                <!-- 內容頁面 -->
-                <div v-else 
-                     class="page"
-                     :class="currentView + '-page'">
-                    <div class="page-content" v-scroll-reveal>
-                        <div v-html="sections[currentView].content"></div>
-                    </div>
-                </div>
             </transition>
         </main>
     </div>
