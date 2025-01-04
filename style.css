@@ -1,5 +1,78 @@
-[v-cloak] {
-    display: none;
+/* 通知樣式 */
+.notification {
+    position: fixed;    /* 固定定位 */
+    bottom: 20px;      /* 距離底部 20px */
+    right: 20px;       /* 距離右側 20px */
+    padding: 1rem 2rem; /* 上下 1rem，左右 2rem 的內邊距 */
+    background-color: #333; /* 深色背景 */
+    color: white;      /* 白色文字 */
+    border-radius: 5px; /* 圓角邊框 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+    z-index: 1000;     /* 確保顯示在最上層 */
+    opacity: 0;        /* 初始透明 */
+    transform: translateY(20px); /* 初始向下偏移 */
+    transition: opacity 0.3s, transform 0.3s; /* 過渡效果 */
+}
+
+/* 通知顯示狀態 */
+.notification.show {
+    opacity: 1;        /* 完全不透明 */
+    transform: translateY(0); /* 回到原位 */
+}
+
+/* 動畫效果 */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s ease; /* 淡入淡出過渡效果 */
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;        /* 開始和結束時完全透明 */
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;  /* 縮小導航欄內邊距 */
+    }
+    
+    .search-box input {
+        width: 150px;   /* 縮小搜索框寬度 */
+    }
+    
+    .search-box input:focus {
+        width: 200px;   /* 縮小搜索框焦點時的寬度 */
+    }
+    
+    .sections {
+        grid-template-columns: 1fr; /* 單列顯示 */
+    }
+}
+
+/* 移除所有返回按鈕相關的樣式 */
+.home-btn,
+.back-btn,
+.return-btn,
+[class*="back-to-home"],
+[class*="return-home"],
+[class*="back"],
+[class*="return"],
+button[class*="back"],
+button[class*="return"],
+a[class*="back"],
+a[class*="return"] {
+    display: none !important;      /* 不顯示元素 */
+    visibility: hidden !important; /* 隱藏元素 */
+    opacity: 0 !important;        /* 完全透明 */
+    pointer-events: none !important; /* 禁止鼠標事件 */
+    position: absolute !important; /* 絕對定位 */
+    width: 0 !important;          /* 寬度為 0 */
+    height: 0 !important;         /* 高度為 0 */
+    margin: 0 !important;         /* 外邊距為 0 */
+    padding: 0 !important;        /* 內邊距為 0 */
+    border: 0 !important;         /* 邊框為 0 */
+    overflow: hidden !important;  /* 隱藏溢出內容 */
 }
 
 /* 基本樣式重置 */
@@ -76,10 +149,49 @@ body {
     font-size: 1.1rem;
 }
 
-/* 主要內容區域 */
+/* 主要內容區域樣式 */
 main {
-    padding-top: 120px;
-    min-height: 100vh;
+    flex: 1;           /* 佔用剩餘空間 */
+    padding-top: 120px; /* 為固定導航欄和新聞條預留空間 */
+    max-width: 1200px; /* 限制最大寬度 */
+    margin: 0 auto;    /* 水平居中 */
+    padding-bottom: 2rem; /* 底部留出空間 */
+}
+
+/* 區塊網格布局 */
+.sections {
+    display: grid;     /* 使用網格布局 */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 響應式網格列 */
+    gap: 2rem;         /* 網格間距 */
+    padding: 1rem;     /* 內邊距 */
+}
+
+/* 單個區塊樣式 */
+.section {
+    background-color: rgba(255, 255, 255, 0.9); /* 半透明白色背景 */
+    border-radius: 10px; /* 圓角邊框 */
+    padding: 2rem;     /* 內邊距 */
+    text-align: center; /* 文字居中 */
+    cursor: pointer;   /* 滑鼠指針變為手型 */
+    transition: transform 0.3s, box-shadow 0.3s; /* 變換和陰影過渡效果 */
+    min-height: 200px; /* 最小高度 */
+    display: flex;     /* 使用彈性布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+}
+
+/* 區塊懸停效果 */
+.section:hover {
+    transform: translateY(-5px); /* 向上移動 5px */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 增強陰影效果 */
+}
+
+/* 頁面標題樣式 */
+.page-title {
+    font-size: 2.5rem; /* 設置字體大小 */
+    margin: 1rem 0;    /* 上下外邊距 */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* 文字陰影效果 */
 }
 
 /* 首頁區塊樣式 */
@@ -878,31 +990,6 @@ main {
     .contact-info {
         text-align: center;
     }
-}
-
-/* 移除返回鍵相關的樣式 */
-.home-btn,
-.back-btn,
-.return-btn,
-[class*="back-to-home"],
-[class*="return-home"],
-[class*="back"],
-[class*="return"],
-button[class*="back"],
-button[class*="return"],
-a[class*="back"],
-a[class*="return"] {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    position: absolute !important;
-    width: 0 !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-    overflow: hidden !important;
 }
 
 /* Notification Style */
