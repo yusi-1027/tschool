@@ -78,7 +78,7 @@ const app = createApp({
                                 </div>
                             </div>
                         </div>
-                    `,
+                    `
                 },
                 admission: {
                     title: '入學管道<br>ADMISSION',
@@ -113,7 +113,7 @@ const app = createApp({
                                 <p>下次說明會時間：2024年1月15日 19:00</p>
                             </div>
                         </div>
-                    `,
+                    `
                 },
                 resources: {
                     title: '教學資源<br>TEACHING RESOURCES',
@@ -150,7 +150,7 @@ const app = createApp({
                                 </ul>
                             </div>
                         </div>
-                    `,
+                    `
                 },
                 exchange: {
                     title: '互動交流<br>INTERACTIVE EXCHANGE',
@@ -186,7 +186,7 @@ const app = createApp({
                                 </ul>
                             </div>
                         </div>
-                    `,
+                    `
                 }
             },
             currentView: 'home',
@@ -215,4 +215,4 @@ const app = createApp({
 app.directive('scroll-reveal', vScrollReveal)
 
 // 掛載應用
-app.mount('#app')
+const mountedApp = app.mount('#app')

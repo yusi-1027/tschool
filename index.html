@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T-SCHOOL</title>
     <link rel="stylesheet" href="style.css">
-    <script src="vue.global.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         <!-- 導航欄 -->
         <nav class="navbar">
-            <div class="logo">T-SCHOOL</div>
+            <div class="logo" @click="currentView = 'home'" style="cursor: pointer;">T-SCHOOL</div>
             <div class="search-box">
                 <input type="text" placeholder="搜尋...">
             </div>
@@ -30,43 +29,30 @@
         <!-- 主要內容區 -->
         <main>
             <!-- 首頁區塊 -->
-            <div v-if="currentView === 'home'" class="sections">
-                <section v-for="(section, key) in sections" 
-                         :key="key"
-                         class="section"
-                         :class="key + '-section'"
-                         @click="currentView = key"
-                         v-scroll-reveal>
-                    <h2 v-html="section.title"></h2>
-                    <div class="scroll-indicator">▼</div>
-                </section>
-            </div>
-
-            <!-- 內容頁面 -->
-            <div v-for="(section, key) in sections" 
-                 :key="key"
-                 v-if="currentView === key" 
-                 class="page"
-                 :class="key + '-page'">
-                <div class="page-content" v-scroll-reveal>
-                    <div v-html="section.content"></div>
-                    <button class="home-btn" @click="currentView = 'home'">
-                        返回首頁
-                    </button>
+            <transition name="fade" mode="out-in">
+                <div v-if="currentView === 'home'" class="sections">
+                    <section v-for="(section, key) in sections" 
+                             :key="key"
+                             class="section"
+                             :class="key + '-section'"
+                             @click="currentView = key"
+                             v-scroll-reveal>
+                        <h2 v-html="section.title"></h2>
+                    </section>
                 </div>
-            </div>
+
+                <!-- 內容頁面 -->
+                <div v-else 
+                     class="page"
+                     :class="currentView + '-page'">
+                    <div class="page-content" v-scroll-reveal>
+                        <div v-html="sections[currentView].content"></div>
+                    </div>
+                </div>
+            </transition>
         </main>
-
-        <!-- 返回首頁按鈕 -->
-        <transition name="fade">
-            <button v-if="currentView !== 'home'" 
-                    @click="currentView = 'home'" 
-                    class="home-btn">
-                返回首頁
-            </button>
-        </transition>
     </div>
-
+    <script src="vue.global.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
