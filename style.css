@@ -881,8 +881,15 @@ main {
 }
 
 /* 移除返回鍵相關的樣式 */
-.back-btn {
+.home-btn,
+.back-btn,
+.return-btn,
+[class*="back-to-home"],
+[class*="return-home"] {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
 /* Notification Style */
