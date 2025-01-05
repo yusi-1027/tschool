@@ -5,45 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T-SCHOOL</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.js"></script>
 </head>
 <body>
-    <div id="app" v-cloak>
-        <!-- 導航欄 -->
+    <div id="app">
         <nav class="navbar">
-            <div class="logo" @click="currentView = 'home'" style="cursor: pointer;">T-SCHOOL</div>
-            <div class="search-box">
-                <input type="text" placeholder="搜尋...">
-            </div>
+            <div class="logo" @click="currentView = 'home'">T-SCHOOL</div>
         </nav>
 
-        <!-- 最新消息輪播 -->
-        <div class="news-ticker" v-show="currentView === 'home'">
-            <transition name="fade" mode="out-in">
-                <div :key="currentNewsIndex" class="news-item">
-                    {{ news[currentNewsIndex] }}
-                </div>
-            </transition>
-        </div>
-
-        <!-- 主要內容區 -->
         <main>
-            <!-- 首頁區塊 -->
-            <transition name="fade" mode="out-in">
-                <div v-if="currentView === 'home'" class="sections">
-                    <section v-for="(section, key) in sections" 
-                             :key="key"
-                             class="section"
-                             :class="key + '-section'"
-                             @click="currentView = key"
-                             v-scroll-reveal>
-                        <h2 v-html="section.title"></h2>
-                    </section>
-                </div>
-            </transition>
+            <div v-if="currentView === 'home'" class="sections">
+                <section v-for="(section, key) in sections"
+                         :key="key"
+                         class="section"
+                         @click="currentView = key">
+                    <h2 v-html="section.title"></h2>
+                </section>
+            </div>
+
+            <div v-else class="content-page">
+                <h2 v-html="sections[currentView].title"></h2>
+                <div v-html="sections[currentView].content"></div>
+            </div>
         </main>
     </div>
-    <script src="vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

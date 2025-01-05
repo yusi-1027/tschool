@@ -224,6 +224,105 @@ main {
     margin-bottom: 1rem;
 }
 
+/* 內容頁面樣式 */
+.content-page {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.page-content {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 關於我們頁面樣式 */
+.about-content {
+    line-height: 1.6;
+}
+
+.intro-text {
+    margin-bottom: 2rem;
+}
+
+.intro-text h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* 入學管道頁面樣式 */
+.admission-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.admission-item {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.admission-item h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.deadline {
+    margin-top: 1rem;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* 教學資源頁面樣式 */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.resource-item {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.resource-item h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* 互動交流頁面樣式 */
+.exchange-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.exchange-item {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.exchange-item h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
 /* 頁面樣式 */
 .page {
     padding-top: 80px;
@@ -374,7 +473,7 @@ main {
     opacity: 0.7;
 }
 
-/* 內容頁面樣式 */
+/* 內容頁面 */
 .page {
     min-height: 100vh;
     padding: 80px 20px 20px;
