@@ -3,33 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T-SCHOOL</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.js"></script>
+    <title>TSchool</title>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar">
-            <div class="logo" @click="currentView = 'home'">T-SCHOOL</div>
-        </nav>
-
-        <main>
-            <div v-if="currentView === 'home'" class="sections">
-                <section v-for="(section, key) in sections"
-                         :key="key"
-                         class="section"
-                         @click="currentView = key">
-                    <h2 v-html="section.title"></h2>
-                </section>
-            </div>
-
-            <div v-else class="content-page">
-                <h2 v-html="sections[currentView].title"></h2>
-                <div v-html="sections[currentView].content"></div>
-            </div>
-        </main>
-    </div>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="main.js"></script>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
 </body>
 </html>
